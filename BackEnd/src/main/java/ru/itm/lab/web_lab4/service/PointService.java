@@ -35,9 +35,6 @@ public class PointService {
     }
 
     public Point savePoint(String jwtToken, Point point){
-        if (point == null) {
-            throw new NullPointerException();
-        }
         if(!validation.coordinationIsValid(point.getxCoordination(),point.getyCoordination(),point.getrSizeGraph())){
             throw new IllegalArgumentException();
         }

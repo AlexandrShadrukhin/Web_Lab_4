@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import ru.itm.lab.web_lab4.entity.User;
@@ -20,7 +21,8 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private static final String openSesame = "ra+z8sR8I4g09gPU0tlj1pPpFIxBDCnV9ONLzU1QVY+aOJhk+TGY8/QTzMC6IrVwYfZZ4WqQvsyiqvEApq5S5kE2ND9fCBIPxb4ibz7K/4/GEBO2mHvkwn6f21ExqSi1grRulTSNuQ68cewHvneskT8A8FlVnMYf2w4X4BaUx5I0aA0DVS6s0KBhCyfm+wVe6tnuXbDPETUfMgufw/6dB0F5ZMoFjNoozTZ24jfwUnceEeMleMVyZGu/JKTKG2btIaUHgMRwVcmkGBxOpr292kUPX2cby3F3rxY9SBWO2+m6bHewN2sPmaREUuO8Zc/aw3SyGvmtjWHQbkevpaq3fr6U28B5PYlIRo3xQyahUwE=";
+    @Value("${secret.key}")
+    private String openSesame;
     public String extractUsername(String token){
         return extractClaim(token,Claims->Claims.get("username",String.class));
     }
