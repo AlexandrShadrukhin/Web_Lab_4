@@ -121,7 +121,6 @@ const Graph = ({ xValue, setX, yValue, setY, rValue, setR, list, setList,canvasR
             alert("Выберите значение R");
             return;
         }
-        console.log(rValue)
         const canvas = pointCanvasRef.current;
         const xAxis = (Math.round(canvas.width / cageSize / 2)-1 ) * cageSize;
         const yAxis = Math.round(canvas.height / cageSize / 2) * cageSize;
