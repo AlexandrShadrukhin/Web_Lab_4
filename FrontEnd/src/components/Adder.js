@@ -53,7 +53,6 @@ const Adder = ({
         const x = form.x.value;
         const y = form.y.value;
         const r = form.r.value;
-        console.log(x, y, r)
         const validationErrors = validateInputs(x, y, r);
         setX(x);
         setY(y);
