@@ -14,7 +14,7 @@ import ru.itm.lab.web_lab4.repository.UserRepository;
 import ru.itm.lab.web_lab4.security.AuthenticationRequest;
 import ru.itm.lab.web_lab4.security.AuthenticationResponse;
 import ru.itm.lab.web_lab4.security.RegisterRequest;
-import ru.itm.lab.web_lab4.security.problemResponse;
+import ru.itm.lab.web_lab4.security.errorMessage;
 import ru.itm.lab.web_lab4.service.AuthenticationService;
 import ru.itm.lab.web_lab4.service.UserService;
 
@@ -29,7 +29,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
         if (userService.isExist(request.getUsername())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(new problemResponse("username \'" + request.getUsername() + "\' is already taken"));
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(new errorMessage("username \'" + request.getUsername() + "\' is already taken"));
         } else {
             return ResponseEntity.ok(authenticationService.register(request));
         }
@@ -40,10 +40,10 @@ public class AuthenticationController {
         try {
             return ResponseEntity.ok(authenticationService.authenticate(request));
         } catch (UsernameNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new problemResponse("User \'" + request.getUsername() + "\' is not found"));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new errorMessage("User \'" + request.getUsername() + "\' is not found"));
         }
         catch(BadCredentialsException e) {
-            return ResponseEntity.status(HttpStatus.resolve(400)).body(new problemResponse("Incorrect password"));
+            return ResponseEntity.status(HttpStatus.resolve(400)).body(new errorMessage("Incorrect password"));
         }
 
     }
