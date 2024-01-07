@@ -21,7 +21,6 @@ public class PointController {
             return ResponseEntity.ok(pointService.getAllPointsById(token));
         } catch (NullPointerException e) {
             return ResponseEntity.ok().build();
-            /*HttpStatus.NOT_FOUND).body(new problemResponse("Any points not found"))*/
         }
     }
 
