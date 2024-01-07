@@ -9,11 +9,11 @@ const cageSize = 50;
 const Graph = ({ xValue, setX, yValue, setY, rValue, setR, list, setList,canvasRef,pointCanvasRef,drawDot,validateInputs,setErrors }) => {
     useEffect(() => {
 
-        const graphWidth = 600; // Ширина графика
-        const graphHeight = 500; // Высота графика
+        const graphWidth = 600;
+        const graphHeight = 500;
 
-        const colorRed = "red"; // Цвет красный
-        const colorBlack = "black"; // Цвет черный
+        const colorRed = "red";
+        const colorBlack = "black";
 
         const drawGrid = () => {
             const ctx = canvasRef.current.getContext('2d');
@@ -108,16 +108,12 @@ const Graph = ({ xValue, setX, yValue, setY, rValue, setR, list, setList,canvasR
             ctx.closePath();
         };
 
-
-
-        // Нарисовать график с текущим rValue
         drawGraph(rValue);
     }, [xValue, yValue, rValue]);
 
 
     const handleClick = (event) => {
         if (rValue === null) {
-            // Нажатие недействительно, поскольку `r` не выбран
             alert("Выберите значение R");
             return;
         }
