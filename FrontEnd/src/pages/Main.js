@@ -52,8 +52,10 @@ const Main = () => {
             });
     }, []);
     if (!isLoggedIn) {
-        navigate("/");
-        window.location.reload();
+        setTimeout(()=>{
+            dispatch(setMessage("Authorization error. Please log in"))
+        },1000);
+        navigate('/');
         dispatch(logout());
     }
 
