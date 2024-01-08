@@ -1,7 +1,14 @@
 import {Link} from "react-router-dom";
-import React from "react";
+import React, {useCallback} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../slice/authSlice";
 
-const Links = ({ logOut,currentToken}) => {
+const Links = () => {
+    const {token: currentToken} = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    const logOut = useCallback(() => {
+        dispatch(logout());
+    }, [dispatch]);
     const logOutLink = (
         <div className="navbar-nav ml-auto">
             <li className="nav-item">
