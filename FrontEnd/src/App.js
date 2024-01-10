@@ -40,10 +40,5 @@ const App = () => {
         </Provider>
     );
 };
-/*const mapStateToProps = store => {
-    return {
-        auth: authSlice,
-        message: messageSlice
-    }
-}*/
+
 export default App;
